@@ -1,12 +1,14 @@
 //storing all the html we want to manipulate in javascript variables
-const previousScreen = document.querySelector(".display-1");
-const currentScreen = document.querySelector(".display-2");
+const previousScreen = document.querySelector(".display-2");
+const currentScreen = document.querySelector(".display-1");
 const tempResultScreen = document.querySelector(".temp-result");
 const numbersEl = document.querySelectorAll(".number");
-const operationEl = document.querySelectorAll(".operation");
-const equalEl = document.querySelector(".equal");
-const clearAllEl = document.querySelector(".all-clear");
-const clearLastEntryEl = document.querySelector(".last-entity-clear");
+const operationEl = document.querySelectorAll(".operator");
+const equalEl = document.querySelector(".equals");
+const clearAllEl = document.querySelector(".clear");
+const clearLastEntryEl = document.querySelector(".clearEntry");
+const deleteEl = document.querySelector('.delete');
+const signChangeEl = document.querySelector('.signChange');
 
 
 //lets keep track of the operands and operators
@@ -24,7 +26,9 @@ numbersEl.forEach(num => {
         const {textContent: number} = num;
 
         //prevent the operand from having more than 1 decimal point
-        if(currentOperand.includes('.') && number === '.') return        
+        if(currentOperand.includes('.') && number === '.') return 
+        
+        if(currentOperand.length > 24) return
         
          
         if(previousOperand && !currentOperand){
@@ -40,10 +44,17 @@ numbersEl.forEach(num => {
 })
 
 function updateDisplay(){
-    if(isNaN(result) || isNaN(currentOperand)) return
+    // if(isNaN(result) || isNaN(currentOperand)) return
+    if(currentOperand.length > 16){
+        currentScreen.style.fontSize = '2rem'
+    }else if(currentOperand.length > 14){
+        currentScreen.style.fontSize = '3rem'
+    }
+    else{
+        currentScreen.style.fontSize = '3.5rem'
+    }
     previousScreen.textContent = previousOperand;
-    currentScreen.textContent = currentOperand;
-    tempResultScreen.textContent = result;
+    currentScreen.textContent = currentOperand;    
 }
 
 /*add click event listeners to all the operators, once an operator is clicked,
@@ -62,10 +73,10 @@ operationEl.forEach(op => {
             result = currentOperand;            
         }
         currentOperator = operator;
-        previousOperand += currentOperand + ' ' + currentOperator + " "
-        updateDisplay();
+        previousOperand += currentOperand + ' ' + currentOperator + " ";
         currentOperand = '';
-        
+        updateDisplay();
+        currentScreen.textContent = '0'; 
     })
 })
 
@@ -76,12 +87,14 @@ equalEl.addEventListener('click', () => {
     // if(!currentOperand){
     //     currentOperand = result;
     // }
+    
     calculate();
     previousOperand += currentOperand;
     currentOperand = result;
     result = '';
     updateDisplay()
-    previousOperand = '';    
+    previousOperand = '';
+    // currentScreen.value = '0';   
 })
 
 function calculate(){
@@ -105,16 +118,30 @@ clearAllEl.addEventListener('click', () => {
     currentOperator = '';
     result = '';    
     updateDisplay()
+    currentScreen.textContent = '0';
 } )
 
 clearLastEntryEl.addEventListener('click', () => {
+    console.log('clearing entry...')
+    
     currentOperand = '';
     updateDisplay()
+    currentScreen.textContent = '0';
 })
 
+deleteEl.addEventListener('click', () => {
+    if(currentOperand.length < 1){
+        currentScreen.value = '0';
+        return
+    }
+    currentOperand = currentOperand.slice(0, -1);
+    updateDisplay()    
+})
 
-
-
+signChangeEl.addEventListener('click', () => {
+    currentOperand = Number(currentOperand) * -1;
+    updateDisplay()
+})
 
 
 

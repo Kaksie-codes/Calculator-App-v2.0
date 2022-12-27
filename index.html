@@ -4,42 +4,98 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator App v6.0</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Calculator App v2.0</title>
+    <link rel="stylesheet" href="style.css">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="script.js" defer></script>
 </head>
 <body>
-    <section>
-        <div class="container">
-            <div class="calculator">
-                <div class="display">
-                    <div class="display-1">0</div>
-                    <div class="display-2">0</div>
-                    <div class="temp-result"></div>
-                </div>
-                <div class="all_button">
-                    <div class="button all-clear">C</div>
-                    <div class="button last-entity-clear">CE</div>
-                    <div class="button operation">%</div>
-                    <div class="button operation">÷</div>
-                    <div class="button number">7</div>
-                    <div class="button number">8</div>
-                    <div class="button number">9</div>
-                    <div class="button operation">×</div>
-                    <div class="button number">4</div>
-                    <div class="button number">5</div>
-                    <div class="button number">6</div>
-                    <div class="button operation">-</div>
-                    <div class="button number">1</div>
-                    <div class="button number">2</div>
-                    <div class="button number">3</div>
-                    <div class="button operation">+</div>
-                    <div class="button btn-0 number">0</div>
-                    <div class="button number dot">.</div>
-                    <div class="button equal">=</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="calculator-container">
+        <header class="header">            
+            <i class="fa-solid fa-bars"></i>            
+            <span>Basic Calculator</span>
+        </header>
+        <section class="display">
+            <div class="display-2"></div>
+            <div class="display-1">0</div>            
+        </section>  
+        
+
+        <button class="clearEntry function">CE</button>
+        <button class="clear function">C</button>
+        <button class="delete function">
+            <i class="fas fa-backspace"></i>
+        </button>
+        <button class="operator divide function">÷</button>
+    
+        <button class="number">7</button>
+        <button class="number">8</button>
+        <button class="number">9</button>
+        <button class="operator function">×</button>
+    
+        <button class="number">4</button>
+        <button class="number">5</button>
+        <button class="number">6</button>
+        <button class="operator function">-</button>
+    
+        <button class="number">1</button>
+        <button class="number">2</button>
+        <button class="number">3</button>
+        <button class="operator function">+</button>
+    
+        <button class="signChange">+/-</button>
+        <button class="number">0</button>
+        <button class="number">.</button>
+        <button class="equals">=</button>
+    </div>
+
+    
+
+    <!-- <div class="calculator-container Scientific">
+        <header class="header">           
+            <i class="fa-solid fa-bars"></i>            
+            <span>Scientific Calculator</span>            
+        </header>
+        <section class="display">
+            <div class="display-2"></div>
+            <div class="display-1">0</div>
+        </section>
+    
+        <button class="operator function">%</button>
+        <button class="operator function">
+            <i class="fa-solid fa-square-root-variable"></i>            
+        </button>
+        <button class="operator function">x&#xb2;</button>
+        <button class="operator function">1/𝑥</button>
+
+        <button class="clearEntry function">CE</button>
+        <button class="clear function">C</button>
+        <button class="delete function">
+            <i class="fas fa-backspace"></i>
+        </button>
+        <button class="operator divide function">÷</button>
+    
+        <button class="number">7</button>
+        <button class="number">8</button>
+        <button class="number">9</button>
+        <button class="operator function">×</button>
+    
+        <button class="number">4</button>
+        <button class="number">5</button>
+        <button class="number">6</button>
+        <button class="operator function">-</button>
+    
+        <button class="number">1</button>
+        <button class="number">2</button>
+        <button class="number">3</button>
+        <button class="operator function">+</button>
+    
+        <button class="signChange">+/-</button>
+        <button class="number">0</button>
+        <button class="number">.</button>
+        <button class="equals">=</button>
+    </div> -->
 </body>
 </html>
